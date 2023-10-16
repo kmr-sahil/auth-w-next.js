@@ -43,11 +43,12 @@ export default function ResetPassword () {
 
     return(
         <div className="flex flex-col items-center justify-center min-h-screen py-2">
-            <h1>Reset / Change Password</h1>
+            <h1 className="text-primary">Reset / Change Password</h1>
 
-        <label htmlFor="password">Old Password</label>
+        <label htmlFor="password" className="label">Old Password</label>
         <input 
-        className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black"
+        className="input
+        "
             id="password"
             type="password"
             value={password.oldPassword}
@@ -55,18 +56,20 @@ export default function ResetPassword () {
             placeholder="old password"
             />
 
-        <label htmlFor="password">New Password</label>
+        <label htmlFor="password" className="label">New Password</label>
         <input 
-        className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black"
+        className="input
+        "
             id="password"
             type="password"
 
             placeholder="new password"
             />
 
-        <label htmlFor="password">Confirm Password</label>
+        <label htmlFor="password" className="label">Confirm Password</label>
         <input 
-        className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black"
+        className="input
+        "
             id="password"
             type="password"
             value={password.newPassword}
@@ -74,7 +77,7 @@ export default function ResetPassword () {
             placeholder="confirm password"
             />
 
-        <button onClick={onSubmit}>Submit</button>
+        <button className="btn-primary" onClick={onSubmit}>Submit</button>
         </div>
     )
 }

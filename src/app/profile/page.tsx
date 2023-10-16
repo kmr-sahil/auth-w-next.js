@@ -38,7 +38,7 @@ export default function ProfilePage() {
         <div className="flex flex-col items-center justify-center min-h-screen py-2">
             <h1 className="text-primary">Profile</h1>
             <hr />
-            <h2 className="btn-primary">{data === 'nothing' ? "Nothing" : <Link href={`/profile/${data}`}>{data}
+            <h2 className="label text-center">{data === 'nothing' ? "Nothing" : <Link href={`/profile/${data}`}>{data}
             </Link>}</h2>
             <hr />
             <button onClick={onLogout} className="btn-primary">LogOut</button>

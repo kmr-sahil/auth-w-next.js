@@ -64,7 +64,7 @@ export default function SignUpPage() {
                 placeholder="password" />
 
             <button onClick={onSignup} 
-                className="btn-primaryd">
+                className="btn-primary">
                 {disabled ? "No signup" : "Signup"}</button>
             <Link href="/login" className="btn-primary">Visit login page</Link>
         </div>
