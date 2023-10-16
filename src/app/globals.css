@@ -25,3 +25,19 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+@layer components {
+  .btn-primary {
+    @apply px-2 py-1 rounded-md text-gray-200 outline outline-2 outline-zinc-400 bg-[#4545459b] outline-offset-4 my-4;
+  }
+  .label {
+    @apply w-[14rem] text-[1rem] text-gray-200  my-2;
+  }
+  .text-primary {
+    @apply bg-clip-text text-transparent text-[3rem] font-extralight bg-gradient-to-r from-cyan-100 to-zinc-400 my-2;
+  }
+
+  .input {
+    @apply rounded-lg px-[0.5rem] py-[0.25rem] text-base mb-[1rem];
+  }
+}

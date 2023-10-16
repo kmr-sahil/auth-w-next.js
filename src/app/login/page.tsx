@@ -42,28 +42,28 @@ export default function LoginPage() {
 
     return (
         <div className="flex flex-col items-center justify-center min-h-screen py-2 text-slate-950"> 
-            <h1 className="text-xl text-white">{loading ? "Processing" : "Login"}</h1>
+            <h1 className="text-primary">{loading ? "Processing" : "Login"}</h1>
             <hr />
 
-            <label htmlFor="email" className="text-white my-2">email</label>
-            <input className="rounded-lg px-[0.5rem] py-[0.25rem] text-base"
+            <label htmlFor="email" className="label">email</label>
+            <input className="input"
                 type="email" value={user.email}
                 id="email"
                 onChange={(e) => setUser({...user, email: e.target.value})}
                 placeholder="email" />
 
-            <label htmlFor="password" className="my-2 text-white">password</label>
-            <input className="rounded-lg px-[0.5rem] py-[0.25rem] text-base"
+            <label htmlFor="password" className="label">password</label>
+            <input className="input"
                 type="password" value={user.password}
                 id="password"
                 onChange={(e) => setUser({...user, password: e.target.value})}
                 placeholder="password" />
 
             <button onClick={onLogin} 
-                className="bg-white my-4 text-gray-950 px-[1rem] py-[0.5rem] rounded-md">
+                className="btn-primary">
                 {disabled ? "No LogIn" : "LogIn"}</button>
 
-            <Link href="/signup" className="text-white my-2">Visit SignUp page</Link>
+            <Link href="/signup" className="btn-primary">Visit SignUp page</Link>
         </div>
     )
 }

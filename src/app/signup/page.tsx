@@ -40,33 +40,33 @@ export default function SignUpPage() {
 
     return (
         <div className="flex flex-col items-center justify-center min-h-screen py-2 text-slate-950"> 
-            <h1 className="text-xl text-white">{loading ? "Processing" : "Sign Up"}</h1>
+            <h1 className="text-primary">{loading ? "Processing" : "Sign Up"}</h1>
             <hr />
-            <label htmlFor="username" className="text-white">username</label>
-            <input className="rounded-lg px-[0.5rem] py-[0.25rem] text-base"
+            <label htmlFor="username" className="label">username</label>
+            <input className="input"
                 type="text" value={user.username}
                 id="username"
                 onChange={(e) => setUser({...user, username: e.target.value})}
                 placeholder="username" />
 
-            <label htmlFor="email" className="text-white">email</label>
-            <input className="rounded-lg px-[0.5rem] py-[0.25rem] text-base"
+            <label htmlFor="email" className="label">email</label>
+            <input className="input"
                 type="email" value={user.email}
                 id="email"
                 onChange={(e) => setUser({...user, email: e.target.value})}
                 placeholder="email" />
 
-            <label htmlFor="password" className="text-white">password</label>
-            <input className="rounded-lg px-[0.5rem] py-[0.25rem] text-base"
+            <label htmlFor="password" className="label">password</label>
+            <input className="input"
                 type="password" value={user.password}
                 id="password"
                 onChange={(e) => setUser({...user, password: e.target.value})}
                 placeholder="password" />
 
             <button onClick={onSignup} 
-                className="bg-white mt-[1rem] text-gray-950 px-[1rem] py-[0.5rem] rounded-md">
+                className="btn-primaryd">
                 {disabled ? "No signup" : "Signup"}</button>
-            <Link href="/login" className="text-white">Visit login page</Link>
+            <Link href="/login" className="btn-primary">Visit login page</Link>
         </div>
     )
 }

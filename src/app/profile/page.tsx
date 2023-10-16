@@ -30,16 +30,21 @@ export default function ProfilePage() {
         
     }
 
+    const resetpassword = () => {
+        router.push("/resetpassword")
+    }
+
     return (
         <div className="flex flex-col items-center justify-center min-h-screen py-2">
-            <h1>Profile</h1>
+            <h1 className="text-primary">Profile</h1>
             <hr />
-            <h2 className="p-1 rounded bg-green-500">{data === 'nothing' ? "Nothing" : <Link href={`/profile/${data}`}>{data}
+            <h2 className="btn-primary">{data === 'nothing' ? "Nothing" : <Link href={`/profile/${data}`}>{data}
             </Link>}</h2>
             <hr />
-            <button onClick={onLogout} className="bg-white my-4 text-gray-950 px-[1rem] py-[0.5rem] rounded-md">LogOut</button>
+            <button onClick={onLogout} className="btn-primary">LogOut</button>
             <hr />
-            <button onClick={getUserDetails} className="bg-white my-4 text-gray-950 px-[1rem] py-[0.5rem] rounded-md">Get Details</button>
+            <button onClick={getUserDetails} className="btn-primary">Get Details</button>
+            <button onClick={resetpassword} className="btn-primary">Change Password</button>
         </div>
     )
 }

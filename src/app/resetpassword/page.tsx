@@ -3,9 +3,10 @@
 import axios from "axios"
 import Link from "next/link"
 import React, {useState, useEffect} from 'react'
+import { useRouter } from "next/navigation";
 
 export default function ResetPassword () {
-
+    const router = useRouter();
     const [password, setPassword] = useState({
         oldPassword: '',
         newPassword: '',
@@ -32,6 +33,7 @@ export default function ResetPassword () {
         try {
             const response = await axios.put('/api/users/resetpassword', password)
             console.log("Login success", response.data);
+            router.push("/login")
             
         } catch (error: any) {
             console.log("Password change failed", error.message);
