@@ -13,7 +13,7 @@ export default function ForgotPasswordPage() {
     setIsButtonDisabled(email.length <= 2);
   }, [email]);
 
-  const emailSubmit = (event:any) => {
+  const emailSubmit = async (event:any) => {
     event.preventDefault();
     if (isButtonDisabled) {
       console.log('Disable:', email);
@@ -22,7 +22,15 @@ export default function ForgotPasswordPage() {
   
     // Handle email submission
     // For now, let's just log the email
-    console.log('Submitted email:', email);
+    
+    try{
+
+      const response = await axios.post("/api/users/forgotpassword", { email: email })
+      console.log("mail send successfully", response.data)
+    } catch(error:any){
+      console.log("mail send Unsuccessfully", error.message)
+    }
+
   }
 
   return (
