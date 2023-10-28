@@ -1,8 +1,12 @@
 "use client"
+import axios from 'axios'
 import React from 'react'
+import { useRouter } from "next/navigation";
 
 export default function SetForgotPassPage() {
 
+    const router = useRouter();
+    const[token, setToken] = React.useState("")
     const[pass, setPass] = React.useState("")
     const[confirm, setConfirm] = React.useState("")
 
@@ -16,19 +20,28 @@ export default function SetForgotPassPage() {
         }
       }, [pass, confirm]);
 
-  const onSubmit = (event:any) => {
+      React.useEffect(() => {
+        const urlToken = window.location.search.split("=")[1];
+        setToken(urlToken || "")
+    },[])
 
-    event.preventDefault();
-    if (isButtonDisabled) {
-      console.log('Disable');
-      return; // Return early if the button is disabled
-    }
-  
-    // Handle email submission
-    // For now, let's just log the email
-    console.log('Submitting form...');
 
-  }
+    const onSubmit = async (event: any) => {
+      event.preventDefault();
+      if (isButtonDisabled) {
+        console.log('Button is disabled');
+        return;
+      }
+    
+      try {
+        await axios.post("api/users/setforgotpass", { token, pass });
+        console.log("Password Changed Succesfully")
+        router.push("/login")
+      } catch (error: any) {
+        console.log('Error:', error.message);
+      }
+    };
+    
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2 text-slate-950">
