@@ -7,6 +7,7 @@ import Link from "next/link";
 export default function ProfilePage() {
     const router = useRouter();
     const [data, setData] = React.useState("nothing")
+    const[name, setName] = React.useState("")
 
     const onLogout = async() => {
         try {
@@ -22,7 +23,9 @@ export default function ProfilePage() {
         try {
             const res = await axios.get("/api/users/me")
             console.log(res.data)
+            setName(res.data.data.username) 
             setData(res.data.data._id)
+            console.log(name)
 
         } catch (error: any) {
             console.log(error.message)
@@ -38,7 +41,7 @@ export default function ProfilePage() {
         <div className="flex flex-col items-center justify-center min-h-screen py-2">
             <h1 className="text-primary">Profile</h1>
             <hr />
-            <h2 className="label text-center">{data === 'nothing' ? "Nothing" : <Link href={`/profile/${data}`}>{data}
+            <h2 className="label text-center">{data === 'nothing' ? `Click "get details" to get username ` : <Link href={`/profile/${data}`}>Hii {name}
             </Link>}</h2>
             <hr />
             <button onClick={onLogout} className="btn-primary">LogOut</button>
