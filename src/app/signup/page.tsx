@@ -3,6 +3,7 @@ import Link from "next/link";
 import React from 'react';
 import { useRouter } from "next/navigation";
 import axios from "axios";
+import Loader from "@/components/Loader";
 
 export default function SignUpPage() {
     const router = useRouter();
@@ -14,6 +15,7 @@ export default function SignUpPage() {
 
     const [loading, setLoading] = React.useState(false)
     const [disabled, setDisabled] = React.useState(false)
+
     React.useEffect(() => {
         if(user.email.length > 0 && user.password.length > 0 && user.username.length > 0){
             setDisabled(false)
@@ -39,7 +41,10 @@ export default function SignUpPage() {
     }
 
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen py-2 text-slate-950"> 
+        <div className="flex flex-col items-center justify-center min-h-screen py-2 text-slate-950 relative"> 
+
+            {loading && <Loader/>}
+
             <h1 className="text-primary">{loading ? "Processing" : "Sign Up"}</h1>
             <hr />
             <label htmlFor="username" className="label">username</label>
