@@ -42,7 +42,7 @@ body {
   }
 
   .input {
-    @apply rounded-lg px-[0.5rem] py-[0.25rem] text-base mb-[1rem];
+    @apply rounded-lg px-[0.5rem] py-[0.25rem] text-base mb-[1rem] text-black;
   }
 }
 

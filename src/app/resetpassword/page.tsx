@@ -4,6 +4,7 @@ import axios from "axios"
 import Link from "next/link"
 import React, {useState, useEffect} from 'react'
 import { useRouter } from "next/navigation";
+import Loader from "@/components/Loader";
 
 export default function ResetPassword () {
     const router = useRouter();
@@ -12,6 +13,8 @@ export default function ResetPassword () {
         newPassword: '',
         userId: '',
     })
+
+    const [loading, setLoading] = React.useState(false);
 
     useEffect(() => {
     const getUserDetails = async () => {
@@ -31,19 +34,25 @@ export default function ResetPassword () {
 
     const onSubmit = async () => {
         try {
+            setLoading(true)
             const response = await axios.put('/api/users/resetpassword', password)
             console.log("Login success", response.data);
             router.push("/login")
             
         } catch (error: any) {
             console.log("Password change failed", error.message);
-        }
+        } finally {
+            setLoading(false)
+          }
     }
 
 
     return(
-        <div className="flex flex-col items-center justify-center min-h-screen py-2">
-            <h1 className="text-primary">Reset / Change Password</h1>
+        <div className="flex flex-col items-center justify-center min-h-screen py-2 relative">
+
+        {loading && <Loader/>}
+
+        <h1 className="text-primary">Reset / Change Password</h1>
 
         <label htmlFor="password" className="label">Old Password</label>
         <input 
