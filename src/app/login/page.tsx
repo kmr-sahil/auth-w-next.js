@@ -4,6 +4,7 @@ import React from 'react';
 import { useRouter } from "next/navigation";
 import  axios  from "axios";
 import { NextResponse } from "next/server";
+import Loader from "@/components/Loader";
 
 export default function LoginPage() {
     const router = useRouter();
@@ -41,8 +42,12 @@ export default function LoginPage() {
     }
 
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen py-2 text-slate-950"> 
-            <h1 className="text-primary">{loading ? "Processing" : "Login"}</h1>
+        <div className="flex flex-col items-center justify-center min-h-screen py-2 text-slate-950 relative"> 
+
+        {loading && <Loader/>}
+            
+
+            <h1 className="text-primary">Login</h1>
             <hr />
 
             <label htmlFor="email" className="label">email</label>

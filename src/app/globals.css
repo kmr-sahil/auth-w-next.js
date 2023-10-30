@@ -45,3 +45,24 @@ body {
     @apply rounded-lg px-[0.5rem] py-[0.25rem] text-base mb-[1rem];
   }
 }
+
+.loader {
+  margin: 3.5rem 5.2rem;
+  width: 48px;
+  height: 48px;
+  border: 5px solid #FFF;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+  }
+
+  @keyframes rotation {
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
+  } 
