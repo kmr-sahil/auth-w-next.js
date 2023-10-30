@@ -43,20 +43,22 @@ export default function VerifyEmailPage() {
             {loading && <Loader/>}
 
             <h1 className="text-primary">Verify Email</h1>
-            <h2 className="text-gray-300 bg-gray-700 rounded-md px-4 py-2">{token ? `${token}` : "no token"}</h2>
+            <h2 className="text-gray-300 bg-[#1e1e21ce] rounded-md px-4 py-2">{token ? `${token}` : "no token"}</h2>
 
             {verified && (
-                <div>
-                    <h2 className="text-gray-300 bg-gray-700 rounded-md px-4 py-2 my-4">Email Verified</h2>
+                <div className="flex flex-col justify-center items-center">
+                    <h2 className="text-gray-300 bg-[#276021c7] rounded-md px-4 py-2 my-5">Email Verified</h2>
                     <Link href="/login" className="btn-primary">
                         Login
                     </Link>
                 </div>
             )}
             {error && (
-                <div>
-                    <h2 className="text-2xl bg-red-500 px-4 py-2 rounded-md text-black my-4">Error</h2>
-                    
+                <div className="flex flex-col justify-center items-center">
+                    <h2 className="text-gray-300 bg-[#602125c7] rounded-md px-4 py-2 my-5">Error</h2>
+                    <Link href="/login" className="btn-primary">
+                        Login
+                    </Link>
                 </div>
             )}
         </div>
