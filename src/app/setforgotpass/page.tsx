@@ -2,6 +2,7 @@
 import axios from 'axios'
 import React from 'react'
 import { useRouter } from "next/navigation";
+import Loader from "@/components/Loader";
 
 export default function SetForgotPassPage() {
 
@@ -9,6 +10,7 @@ export default function SetForgotPassPage() {
     const[token, setToken] = React.useState("")
     const[pass, setPass] = React.useState("")
     const[confirm, setConfirm] = React.useState("")
+    const [loading, setLoading] = React.useState(false);
 
     const [isButtonDisabled, setIsButtonDisabled] = React.useState(true);
 
@@ -34,17 +36,22 @@ export default function SetForgotPassPage() {
       }
     
       try {
+        setLoading(true)
         await axios.post("api/users/setforgotpass", { token, pass });
         console.log("Password Changed Succesfully")
         router.push("/login")
       } catch (error: any) {
         console.log('Error:', error.message);
       }
+      finally {
+        setLoading(false)
+      }
     };
     
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2 text-slate-950">
+    <div className="flex flex-col items-center justify-center min-h-screen py-2 text-slate-950 relative">
+      {loading && <Loader/>}
         <h1 className='text-primary'>Set New Password</h1>
 
         <form action="" className='flex flex-col my-4 items-center'>
